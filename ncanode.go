@@ -2,6 +2,7 @@ package ncanode
 
 import (
 	"encoding/json"
+	"fmt"
 	"strings"
 	"time"
 )
@@ -23,9 +24,11 @@ type APIResponse struct {
 	Message string `json:"message"`
 }
 
-type Time struct {
-	time.Time
+func (r APIResponse) Error() string {
+	return fmt.Sprintf("ncanode: request failed with status %d: %s", r.Status, r.Message)
 }
+
+type Time struct{ time.Time }
 
 func (t *Time) UnmarshalJSON(data []byte) error {
 	v := strings.Trim(string(data), "\"")

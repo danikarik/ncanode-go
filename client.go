@@ -68,6 +68,14 @@ func (c *Client) call(body, reply interface{}) error {
 	}
 	defer resp.Body.Close()
 
+	var apiResp APIResponse
+	if err := json.Unmarshal(data, &apiResp); err != nil {
+		return fmt.Errorf("read api response: %w", err)
+	}
+	if apiResp.Status != 0 || apiResp.Message != "" {
+		return apiResp
+	}
+
 	if err := json.Unmarshal(data, &reply); err != nil {
 		return fmt.Errorf("decode payload: %w", err)
 	}
