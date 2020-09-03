@@ -34,5 +34,4 @@ func TestX509Info(t *testing.T) {
 			require.Equal(t, "122684438670642568061334282296011886211357830154", resp.Result.SerialNumber)
 		})
 	}
-
 }
