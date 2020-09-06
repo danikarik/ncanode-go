@@ -21,9 +21,9 @@ func WithTimeout(t time.Duration) Option {
 	}
 }
 
-func WithHTTPClient(c *http.Client) Option {
+func WithHTTPClient(hc *http.Client) Option {
 	return func(c *Client) error {
-		c.client = c
+		c.client = hc
 		return nil
 	}
 }
