@@ -47,22 +47,24 @@ const (
 	NCAOPERATOR      KeyUser = "NCA_OPERATOR"
 )
 
+type Cert struct {
+	Valid        bool           `json:"valid"`
+	NotAfter     Time           `json:"notAfter"`
+	NotBefore    Time           `json:"notBefore"`
+	Chain        []X509Response `json:"chain"`
+	KeyUsage     KeyUsage       `json:"keyUsage"`
+	SerialNumber string         `json:"serialNumber"`
+	Subject      Subject        `json:"subject"`
+	SignAlg      string         `json:"signAlg"`
+	Sign         string         `json:"sign"`
+	PublicKey    string         `json:"publicKey"`
+	Issuer       Subject        `json:"issuer"`
+	KeyUser      []KeyUser      `json:"keyUser"`
+}
+
 type X509Response struct {
 	APIResponse
-	Result struct {
-		Valid        bool           `json:"valid"`
-		NotAfter     Time           `json:"notAfter"`
-		NotBefore    Time           `json:"notBefore"`
-		Chain        []X509Response `json:"chain"`
-		KeyUsage     KeyUsage       `json:"keyUsage"`
-		SerialNumber string         `json:"serialNumber"`
-		Subject      Subject        `json:"subject"`
-		SignAlg      string         `json:"signAlg"`
-		Sign         string         `json:"sign"`
-		PublicKey    string         `json:"publicKey"`
-		Issuer       Subject        `json:"issuer"`
-		KeyUser      []KeyUser      `json:"keyUser"`
-	} `json:"result"`
+	Result Cert `json:"result"`
 }
 
 type X509Request struct {
