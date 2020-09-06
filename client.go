@@ -52,10 +52,20 @@ func NewClient(addr string, opts ...Option) (*Client, error) {
 	return client, nil
 }
 
-func (c *Client) call(body, reply interface{}) error {
+type modifier func(data []byte) ([]byte, error)
+
+func (c *Client) call(body, reply interface{}, mods ...modifier) error {
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return fmt.Errorf("encode payload: %w", err)
+	}
+
+	for _, mod := range mods {
+		data, err := mod(buf)
+		if err != nil {
+			return fmt.Errorf("apply modifier: %w", err)
+		}
+		buf = data
 	}
 
 	req, err := http.NewRequest("POST", c.host, bytes.NewReader(buf))
