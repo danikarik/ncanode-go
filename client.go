@@ -21,6 +21,13 @@ func WithTimeout(t time.Duration) Option {
 	}
 }
 
+func WithHTTPClient(c *http.Client) Option {
+	return func(c *Client) error {
+		c.client = c
+		return nil
+	}
+}
+
 type Client struct {
 	host   string
 	client *http.Client
