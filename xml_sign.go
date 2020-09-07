@@ -27,6 +27,7 @@ type TSPConfig struct {
 	Enabled       bool
 	Policy        Policy
 	HashAlgorithm HashAlgorithm
+	InCMS         bool
 }
 
 type XMLSignRequest struct {
