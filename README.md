@@ -23,7 +23,7 @@ if err != nil {
     log.Fatal(err)
 }
 
-log.Println(resp)
+log.Println(resp.Result)
 ```
 
 ## Авторы
