@@ -30,7 +30,7 @@ type TSPConfig struct {
 	InCMS         bool
 }
 
-type XMLSignRequest struct {
+type xmlSignRequest struct {
 	P12              string        `json:"p12"`
 	Password         string        `json:"password"`
 	XML              string        `json:"xml"`
@@ -59,7 +59,7 @@ func (c *Client) XMLSign(p12, password, xml string, config *TSPConfig) (*XMLSign
 	body := apiRequest{
 		Version: _v1,
 		Method:  "XML.sign",
-		Params: XMLSignRequest{
+		Params: xmlSignRequest{
 			P12:              p12,
 			Password:         password,
 			XML:              xml,
