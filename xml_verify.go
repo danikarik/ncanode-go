@@ -1,6 +1,6 @@
 package ncanode
 
-type XMLVerifyRequest struct {
+type xmlVerifyRequest struct {
 	XML        string `json:"xml"`
 	VerifyOCSP bool   `json:"verifyOcsp"`
 	VerifyCRL  bool   `json:"verifyCrl"`
@@ -22,7 +22,7 @@ func (c *Client) XMLVerify(xml string, verifyOCSP, verifyCRL bool) (*XMLVerifyRe
 	body := apiRequest{
 		Version: _v1,
 		Method:  "XML.verify",
-		Params: XMLVerifyRequest{
+		Params: xmlVerifyRequest{
 			XML:        xml,
 			VerifyOCSP: verifyOCSP,
 			VerifyCRL:  verifyCRL,

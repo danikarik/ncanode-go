@@ -2,7 +2,7 @@ package ncanode
 
 import "bytes"
 
-type TSPVerifyRequest struct {
+type tspVerifyRequest struct {
 	CMS string `json:"cms"`
 }
 
@@ -25,7 +25,7 @@ func (c *Client) TSPVerify(cms string) (*TSPVerifyResponse, error) {
 	body := apiRequest{
 		Version: _v1,
 		Method:  "TSP.verify",
-		Params:  TSPVerifyRequest{CMS: cms},
+		Params:  tspVerifyRequest{CMS: cms},
 	}
 
 	mod := func(in []byte) ([]byte, error) {

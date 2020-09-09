@@ -70,7 +70,7 @@ func TestXMLVerify(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.Name, func(t *testing.T) {
-			xml, err := xmlcontent(tc.Path)
+			xml, err := filecontent(tc.Path)
 			require.NoError(t, err)
 
 			resp, err := client.XMLVerify(xml, tc.VerifyOCSP, tc.VerifyCRL)

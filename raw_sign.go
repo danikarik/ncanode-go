@@ -1,6 +1,6 @@
 package ncanode
 
-type RawSignRequest struct {
+type rawSignRequest struct {
 	P12              string        `json:"p12"`
 	Password         string        `json:"password"`
 	Raw              string        `json:"raw"`
@@ -30,7 +30,7 @@ func (c *Client) RawSign(p12, password, raw string, config *TSPConfig) (*RawSign
 	body := apiRequest{
 		Version: _v1,
 		Method:  "RAW.sign",
-		Params: RawSignRequest{
+		Params: rawSignRequest{
 			P12:              p12,
 			Password:         password,
 			Raw:              raw,

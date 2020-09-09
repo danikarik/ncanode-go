@@ -2,7 +2,7 @@ package ncanode
 
 import "bytes"
 
-type RawVerifyRequest struct {
+type rawVerifyRequest struct {
 	CMS        string `json:"cms"`
 	VerifyOCSP bool   `json:"verifyOcsp"`
 	VerifyCRL  bool   `json:"verifyCrl"`
@@ -24,7 +24,7 @@ func (c *Client) RawVerify(cms string, verifyOCSP, verifyCRL bool) (*RawVerifyRe
 	body := apiRequest{
 		Version: _v1,
 		Method:  "RAW.verify",
-		Params: RawVerifyRequest{
+		Params: rawVerifyRequest{
 			CMS:        cms,
 			VerifyOCSP: verifyOCSP,
 			VerifyCRL:  verifyCRL,

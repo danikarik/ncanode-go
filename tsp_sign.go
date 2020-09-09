@@ -1,6 +1,6 @@
 package ncanode
 
-type TSPSignRequest struct {
+type tspSignRequest struct {
 	Raw              string        `json:"raw"`
 	UseTsaPolicy     Policy        `json:"useTsaPolicy,omitempty"`
 	TSPHashAlgorithm HashAlgorithm `json:"tspHashAlgorithm,omitempty"`
@@ -21,7 +21,7 @@ func (c *Client) TSPSign(raw string, policy Policy, alg HashAlgorithm) (*TSPSign
 	body := apiRequest{
 		Version: _v1,
 		Method:  "TSP.sign",
-		Params: TSPSignRequest{
+		Params: tspSignRequest{
 			Raw:              raw,
 			UseTsaPolicy:     policy,
 			TSPHashAlgorithm: alg,

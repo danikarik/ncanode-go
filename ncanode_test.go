@@ -21,7 +21,7 @@ func base64content(name string) (string, error) {
 	return base64.RawStdEncoding.EncodeToString(content), nil
 }
 
-func xmlcontent(name string) (string, error) {
+func filecontent(name string) (string, error) {
 	path := filepath.Join("testdata", name)
 
 	content, err := ioutil.ReadFile(path)

@@ -1,8 +1,6 @@
 package ncanode_test
 
 import (
-	"os"
-	"strings"
 	"testing"
 
 	"github.com/danikarik/ncanode-go"
@@ -68,14 +66,6 @@ func TestXMLSign(t *testing.T) {
 			if tc.Config != nil && tc.Config.Enabled {
 				require.NotEmpty(t, resp.Result.TSP)
 			}
-
-			name := strings.Split(strings.Split(tc.Path, "/")[2], ".")[0] + ".xml"
-			file, err := os.Create(name)
-			require.NoError(t, err)
-			defer file.Close()
-
-			_, err = file.Write([]byte(resp.Result.XML))
-			require.NoError(t, err)
 		})
 	}
 }
