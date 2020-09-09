@@ -8,6 +8,7 @@ type rawVerifyRequest struct {
 	VerifyCRL  bool   `json:"verifyCrl"`
 }
 
+// RawVerifyResponse describes json response from RawVerify.
 type RawVerifyResponse struct {
 	apiResponse
 	Result struct {
@@ -16,6 +17,9 @@ type RawVerifyResponse struct {
 	} `json:"result"`
 }
 
+// RawVerify validates cms signature.
+//
+// See https://ncanode.kz/docs.php?go=3f85fac8fa2729687ed307e791ce0fb17d704e26
 func (c *Client) RawVerify(cms string, verifyOCSP, verifyCRL bool) (*RawVerifyResponse, error) {
 	if cms == "" {
 		return nil, ErrInvalidRequestBody

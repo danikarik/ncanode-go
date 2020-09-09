@@ -6,6 +6,7 @@ type tspSignRequest struct {
 	TSPHashAlgorithm HashAlgorithm `json:"tspHashAlgorithm,omitempty"`
 }
 
+// TSPSignResponse describes json response from TSPSign.
 type TSPSignResponse struct {
 	apiResponse
 	Result struct {
@@ -13,6 +14,9 @@ type TSPSignResponse struct {
 	} `json:"result"`
 }
 
+// TSPSign signs any input string using TSP.
+//
+// See https://ncanode.kz/docs.php?go=366ea24993a9887051c5f647f8dba8fa5e236d58
 func (c *Client) TSPSign(raw string, policy Policy, alg HashAlgorithm) (*TSPSignResponse, error) {
 	if raw == "" {
 		return nil, ErrInvalidRequestBody

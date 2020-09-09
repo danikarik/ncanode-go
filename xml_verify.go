@@ -6,6 +6,7 @@ type xmlVerifyRequest struct {
 	VerifyCRL  bool   `json:"verifyCrl"`
 }
 
+// XMLVerifyResponse describes json response from XMLVerify.
 type XMLVerifyResponse struct {
 	apiResponse
 	Result struct {
@@ -14,6 +15,9 @@ type XMLVerifyResponse struct {
 	} `json:"result"`
 }
 
+// XMLVerify validates xml signature.
+//
+// See https://ncanode.kz/docs.php?go=50acb512216c279acfa7eeb6de6dc2592039bd83
 func (c *Client) XMLVerify(xml string, verifyOCSP, verifyCRL bool) (*XMLVerifyResponse, error) {
 	if xml == "" {
 		return nil, ErrInvalidRequestBody

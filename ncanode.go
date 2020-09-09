@@ -28,8 +28,11 @@ func (r apiResponse) Error() string {
 	return fmt.Sprintf("ncanode: request failed with status %d: %s", r.Status, r.Message)
 }
 
+// Time is a small wrapper of std time.
+// Difference is time layout used by json decoding.
 type Time struct{ time.Time }
 
+// UnmarshalJSON implements custom unmarshaling of json decoder.
 func (t *Time) UnmarshalJSON(data []byte) error {
 	v := strings.Trim(string(data), "\"")
 	if v == "null" {
@@ -45,6 +48,7 @@ func (t *Time) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// MarshalJSON implements custom marshaling of json encoder.
 func (t Time) MarshalJSON() ([]byte, error) {
 	return json.Marshal(t)
 }

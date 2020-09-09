@@ -12,8 +12,10 @@ import (
 
 const _timeout = 60 * time.Second
 
+// Option changes client properties.
 type Option func(c *Client) error
 
+// WithTimeout sets http client timeout by given duration.
 func WithTimeout(t time.Duration) Option {
 	return func(c *Client) error {
 		c.client.Timeout = t
@@ -21,6 +23,7 @@ func WithTimeout(t time.Duration) Option {
 	}
 }
 
+// WithHTTPClient sets own http client.
 func WithHTTPClient(hc *http.Client) Option {
 	return func(c *Client) error {
 		c.client = hc
@@ -28,11 +31,15 @@ func WithHTTPClient(hc *http.Client) Option {
 	}
 }
 
+// Client is API client.
 type Client struct {
 	host   string
 	client *http.Client
 }
 
+// NewClient returns a new Client.
+//
+// Takes NCANode host address and options.
 func NewClient(addr string, opts ...Option) (*Client, error) {
 	if addr == "" {
 		return nil, errors.New("ncanode: address invalid or empty")

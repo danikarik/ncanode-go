@@ -1,5 +1,6 @@
 package ncanode
 
+// NodeInfoResponse describes json response from NodeInfo.
 type NodeInfoResponse struct {
 	apiResponse
 	Result struct {
@@ -10,6 +11,9 @@ type NodeInfoResponse struct {
 	} `json:"result"`
 }
 
+// NodeInfo returns NCANode server stats.
+//
+// See https://ncanode.kz/docs.php?go=d8324d275a38b9c386071731e33afcaee4db7b50
 func (c *Client) NodeInfo() (*NodeInfoResponse, error) {
 	body := apiRequest{
 		Version: _v1,

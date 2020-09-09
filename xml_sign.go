@@ -1,14 +1,18 @@
 package ncanode
 
+// Policy is an alias of tsp signing policy.
 type Policy string
 
+// List of values Policy can take.
 const (
 	TSAGostPolicy   Policy = "TSA_GOST_POLICY"
 	TSAGostGtPolicy Policy = "TSA_GOSTGT_POLICY"
 )
 
+// HashAlgorithm is an alias of tsp hash algorithm.
 type HashAlgorithm string
 
+// List of values HashAlgorithm can take.
 const (
 	MD5         HashAlgorithm = "MD5"
 	SHA1        HashAlgorithm = "SHA1"
@@ -23,6 +27,8 @@ const (
 	GOST34311   HashAlgorithm = "GOST34311"
 )
 
+// TSPConfig specifies TSP signing options.
+// Used if Enabled is set to true.
 type TSPConfig struct {
 	Enabled       bool
 	Policy        Policy
@@ -39,6 +45,7 @@ type xmlSignRequest struct {
 	TSPHashAlgorithm HashAlgorithm `json:"tspHashAlgorithm,omitempty"`
 }
 
+// XMLSignResponse describes json response from XMLSign.
 type XMLSignResponse struct {
 	apiResponse
 	Result struct {
@@ -47,6 +54,9 @@ type XMLSignResponse struct {
 	} `json:"result"`
 }
 
+// XMLSign signs xml.
+//
+// See https://ncanode.kz/docs.php?go=7025fdf95d235db4bc6985efd3d1574214107cfd
 func (c *Client) XMLSign(p12, password, xml string, config *TSPConfig) (*XMLSignResponse, error) {
 	if p12 == "" || password == "" || xml == "" {
 		return nil, ErrInvalidRequestBody

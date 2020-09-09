@@ -10,6 +10,7 @@ type rawSignRequest struct {
 	TspInCms         bool          `json:"tspInCms,omitempty"`
 }
 
+// RawSignResponse describes json response from RawSign.
 type RawSignResponse struct {
 	apiResponse
 	Result struct {
@@ -18,6 +19,9 @@ type RawSignResponse struct {
 	} `json:"result"`
 }
 
+// RawSign signs any input string and saves into cms.
+//
+// See https://ncanode.kz/docs.php?go=b52dfc5eddafafb5d7c8cccb06c5f0e011a27f3d
 func (c *Client) RawSign(p12, password, raw string, config *TSPConfig) (*RawSignResponse, error) {
 	if p12 == "" || password == "" || raw == "" {
 		return nil, ErrInvalidRequestBody
