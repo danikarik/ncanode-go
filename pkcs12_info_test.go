@@ -47,6 +47,34 @@ func TestPKCS12Info(t *testing.T) {
 			VerifyCRL:      true,
 			ExpectedResult: false,
 		},
+		{
+			Name:           "Organization/Active/Auth",
+			Path:           "organization/active/AUTH_RSA256_d682726b55b3e62600ea8fe1c74e75fc96f47790.p12",
+			Password:       _defaultPassword,
+			ExpectedResult: true,
+		},
+		{
+			Name:           "Organization/Active/Sign",
+			Path:           "organization/active/GOSTKNCA_13a3741b52d7bf860aab199b56fad1f4652e357b.p12",
+			Password:       _defaultPassword,
+			ExpectedResult: true,
+		},
+		{
+			Name:           "Organization/Revoked/Auth",
+			Path:           "organization/revoked/AUTH_RSA256_7d6d313ac5bf7367a2a69f28607a8deb80dd3ba9.p12",
+			Password:       _defaultPassword,
+			VerifyOCSP:     true,
+			VerifyCRL:      true,
+			ExpectedResult: false,
+		},
+		{
+			Name:           "Organization/Revoked/Sign",
+			Path:           "organization/revoked/GOSTKNCA_c372b7809440fcb681051bbc89ea2f089fd2fe16.p12",
+			Password:       _defaultPassword,
+			VerifyOCSP:     true,
+			VerifyCRL:      true,
+			ExpectedResult: false,
+		},
 	}
 
 	for _, tc := range testCases {
