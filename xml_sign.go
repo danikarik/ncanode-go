@@ -3,8 +3,8 @@ package ncanode
 type Policy string
 
 const (
-	TSAGOSTPOLICY   Policy = "TSA_GOST_POLICY"
-	TSAGOSTGTPOLICY Policy = "TSA_GOSTGT_POLICY"
+	TSAGostPolicy   Policy = "TSA_GOST_POLICY"
+	TSAGostGtPolicy Policy = "TSA_GOSTGT_POLICY"
 )
 
 type HashAlgorithm string
@@ -40,7 +40,7 @@ type XMLSignRequest struct {
 }
 
 type XMLSignResponse struct {
-	APIResponse
+	apiResponse
 	Result struct {
 		XML string `json:"xml"`
 		TSP string `json:"tsp"`
@@ -56,7 +56,7 @@ func (c *Client) XMLSign(p12, password, xml string, config *TSPConfig) (*XMLSign
 		config = &TSPConfig{}
 	}
 
-	body := APIRequest{
+	body := apiRequest{
 		Version: _v1,
 		Method:  "XML.sign",
 		Params: XMLSignRequest{

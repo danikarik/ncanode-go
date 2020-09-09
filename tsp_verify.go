@@ -7,7 +7,7 @@ type TSPVerifyRequest struct {
 }
 
 type TSPVerifyResponse struct {
-	APIResponse
+	apiResponse
 	Result struct {
 		TSPHashAlgorithm HashAlgorithm `json:"tspHashAlgorithm"`
 		SerialNumber     string        `json:"serialNumber"`
@@ -22,7 +22,7 @@ func (c *Client) TSPVerify(cms string) (*TSPVerifyResponse, error) {
 		return nil, ErrInvalidRequestBody
 	}
 
-	body := APIRequest{
+	body := apiRequest{
 		Version: _v1,
 		Method:  "TSP.verify",
 		Params:  TSPVerifyRequest{CMS: cms},

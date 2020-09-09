@@ -1,7 +1,7 @@
 package ncanode
 
 type NodeInfoResponse struct {
-	APIResponse
+	apiResponse
 	Result struct {
 		Datetime Time   `json:"dateTime"`
 		Timezone string `json:"timezone"`
@@ -11,7 +11,7 @@ type NodeInfoResponse struct {
 }
 
 func (c *Client) NodeInfo() (*NodeInfoResponse, error) {
-	body := APIRequest{
+	body := apiRequest{
 		Version: _v1,
 		Method:  "NODE.info",
 	}

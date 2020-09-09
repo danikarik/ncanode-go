@@ -9,7 +9,7 @@ type RawVerifyRequest struct {
 }
 
 type RawVerifyResponse struct {
-	APIResponse
+	apiResponse
 	Result struct {
 		Valid bool `json:"valid"`
 		Cert  Cert `json:"cert"`
@@ -21,7 +21,7 @@ func (c *Client) RawVerify(cms string, verifyOCSP, verifyCRL bool) (*RawVerifyRe
 		return nil, ErrInvalidRequestBody
 	}
 
-	body := APIRequest{
+	body := apiRequest{
 		Version: _v1,
 		Method:  "RAW.verify",
 		Params: RawVerifyRequest{

@@ -1,6 +1,6 @@
 package ncanode
 
-type PKCS12Request struct {
+type pkcs12Request struct {
 	P12        string `json:"p12"`
 	Password   string `json:"password"`
 	VerifyOCSP bool   `json:"verifyOcsp"`
@@ -12,10 +12,10 @@ func (c *Client) PKCS12Info(p12, password string, verifyOCSP, verifyCRL bool) (*
 		return nil, ErrInvalidRequestBody
 	}
 
-	body := APIRequest{
+	body := apiRequest{
 		Version: _v1,
 		Method:  "PKCS12.info",
-		Params: PKCS12Request{
+		Params: pkcs12Request{
 			P12:        p12,
 			Password:   password,
 			VerifyOCSP: verifyOCSP,

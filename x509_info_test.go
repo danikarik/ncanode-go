@@ -30,8 +30,11 @@ func TestX509Info(t *testing.T) {
 			resp, err := client.X509Info(tc.Cert, tc.VerifyOCSP, tc.VerifyCRL)
 			require.NoError(t, err)
 			require.False(t, resp.Result.Valid)
-			require.Equal(t, ncanode.AUTH, resp.Result.KeyUsage)
+			require.Equal(t, ncanode.KeyUsageAuth, resp.Result.KeyUsage)
 			require.Equal(t, "122684438670642568061334282296011886211357830154", resp.Result.SerialNumber)
+
+			t.Log(resp.Result.OCSP)
+			t.Log(resp.Result.CRL)
 		})
 	}
 }

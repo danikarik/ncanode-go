@@ -3,16 +3,16 @@ package ncanode
 type KeyUsage string
 
 const (
-	AUTH    KeyUsage = "AUTH"
-	SIGN    KeyUsage = "SIGN"
-	UNKNOWN KeyUsage = "UNKNOWN"
+	KeyUsageAuth    KeyUsage = "AUTH"
+	KeyUsageSign    KeyUsage = "SIGN"
+	KeyUsageUnknown KeyUsage = "UNKNOWN"
 )
 
 type Gender string
 
 const (
-	MALE   Gender = "MALE"
-	FEMALE Gender = "FEMALE"
+	GenderMale   Gender = "MALE"
+	GenderFemale Gender = "FEMALE"
 )
 
 type Subject struct {
@@ -34,18 +34,33 @@ type Subject struct {
 type KeyUser string
 
 const (
-	INDIVIDUAL       KeyUser = "INDIVIDUAL"
-	ORGANIZATION     KeyUser = "ORGANIZATION"
-	CEO              KeyUser = "CEO"
-	CANSIGN          KeyUser = "CAN_SIGN"
-	CANSIGNFINANCIAL KeyUser = "CAN_SIGN_FINANCIAL"
-	HR               KeyUser = "HR"
-	EMPLOYEE         KeyUser = "EMPLOYEE"
-	NCAPRIVILEGES    KeyUser = "NCA_PRIVILEGES"
-	NCAADMIN         KeyUser = "NCA_ADMIN"
-	NCAMANAGER       KeyUser = "NCA_MANAGER"
-	NCAOPERATOR      KeyUser = "NCA_OPERATOR"
+	KeyUserIndividual       KeyUser = "INDIVIDUAL"
+	KeyUserOrganization     KeyUser = "ORGANIZATION"
+	KeyUserCEO              KeyUser = "CEO"
+	KeyUserCanSign          KeyUser = "CAN_SIGN"
+	KeyUserCanSignFinancial KeyUser = "CAN_SIGN_FINANCIAL"
+	KeyUserHR               KeyUser = "HR"
+	KeyUserEmployee         KeyUser = "EMPLOYEE"
+	KeyUserNCAPrivileges    KeyUser = "NCA_PRIVILEGES"
+	KeyUserNCAAdmin         KeyUser = "NCA_ADMIN"
+	KeyUserNCAManager       KeyUser = "NCA_MANAGER"
+	KeyUserNCAOperator      KeyUser = "NCA_OPERATOR"
 )
+
+type Status string
+
+const (
+	StatusUnknown Status = "UNKNOWN"
+	StatusActive  Status = "ACTIVE"
+	StatusRevoked Status = "REVOKED"
+)
+
+type Revocation struct {
+	Reason    interface{} `json:"revokationReason"`
+	Time      Time        `json:"revokationTime"`
+	RevokedBy string      `json:"revokedBy,omitempty"`
+	Status    Status      `json:"status"`
+}
 
 type Cert struct {
 	Valid        bool           `json:"valid"`
@@ -60,14 +75,16 @@ type Cert struct {
 	PublicKey    string         `json:"publicKey"`
 	Issuer       Subject        `json:"issuer"`
 	KeyUser      []KeyUser      `json:"keyUser"`
+	OCSP         *Revocation    `json:"ocsp"`
+	CRL          *Revocation    `json:"crl"`
 }
 
 type X509Response struct {
-	APIResponse
+	apiResponse
 	Result Cert `json:"result"`
 }
 
-type X509Request struct {
+type x509Request struct {
 	Cert       string `json:"cert"`
 	VerifyOCSP bool   `json:"verifyOcsp"`
 	VerifyCRL  bool   `json:"verifyCrl"`
@@ -78,10 +95,10 @@ func (c *Client) X509Info(cert string, verifyOCSP, verifyCRL bool) (*X509Respons
 		return nil, ErrInvalidRequestBody
 	}
 
-	body := APIRequest{
+	body := apiRequest{
 		Version: _v1,
 		Method:  "X509.info",
-		Params: X509Request{
+		Params: x509Request{
 			Cert:       cert,
 			VerifyOCSP: verifyOCSP,
 			VerifyCRL:  verifyCRL,

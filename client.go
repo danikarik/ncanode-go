@@ -85,7 +85,7 @@ func (c *Client) call(body, reply interface{}, mods ...modifier) error {
 	}
 	defer resp.Body.Close()
 
-	var apiResp APIResponse
+	var apiResp apiResponse
 	if err := json.Unmarshal(data, &apiResp); err != nil {
 		return fmt.Errorf("read api response: %w", err)
 	}

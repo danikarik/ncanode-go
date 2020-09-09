@@ -7,7 +7,7 @@ type XMLVerifyRequest struct {
 }
 
 type XMLVerifyResponse struct {
-	APIResponse
+	apiResponse
 	Result struct {
 		Valid bool `json:"valid"`
 		Cert  Cert `json:"cert"`
@@ -19,7 +19,7 @@ func (c *Client) XMLVerify(xml string, verifyOCSP, verifyCRL bool) (*XMLVerifyRe
 		return nil, ErrInvalidRequestBody
 	}
 
-	body := APIRequest{
+	body := apiRequest{
 		Version: _v1,
 		Method:  "XML.verify",
 		Params: XMLVerifyRequest{

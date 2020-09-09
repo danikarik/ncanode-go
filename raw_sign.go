@@ -11,7 +11,7 @@ type RawSignRequest struct {
 }
 
 type RawSignResponse struct {
-	APIResponse
+	apiResponse
 	Result struct {
 		CMS string `json:"cms"`
 		TSP string `json:"tsp,omitempty"`
@@ -27,7 +27,7 @@ func (c *Client) RawSign(p12, password, raw string, config *TSPConfig) (*RawSign
 		config = &TSPConfig{}
 	}
 
-	body := APIRequest{
+	body := apiRequest{
 		Version: _v1,
 		Method:  "RAW.sign",
 		Params: RawSignRequest{

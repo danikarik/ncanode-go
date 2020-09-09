@@ -7,7 +7,7 @@ type TSPSignRequest struct {
 }
 
 type TSPSignResponse struct {
-	APIResponse
+	apiResponse
 	Result struct {
 		TSP string `json:"tsp"`
 	} `json:"result"`
@@ -18,7 +18,7 @@ func (c *Client) TSPSign(raw string, policy Policy, alg HashAlgorithm) (*TSPSign
 		return nil, ErrInvalidRequestBody
 	}
 
-	body := APIRequest{
+	body := apiRequest{
 		Version: _v1,
 		Method:  "TSP.sign",
 		Params: TSPSignRequest{
