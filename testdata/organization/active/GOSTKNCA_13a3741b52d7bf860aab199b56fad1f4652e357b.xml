@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><root><name>NCANode</name><ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<ds:SignedInfo>
+<ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#gost34310-gost34311"/>
+<ds:Reference URI="">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+<ds:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#gost34311"/>
+<ds:DigestValue>SPY2mmBAwHD5yrQhYTEmmnEOhUxKeWeH+Tad1MmAkXA=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo>
+<ds:SignatureValue>
+LF4bFqCmFSRMp12TDXT7rIN8oJYcy9TH8yEaYFaX2TR3hRg4Ua2sUusrfc/8X+ay26ejqOeQ3ONa
+/fOivOS6ug==
+</ds:SignatureValue>
+<ds:KeyInfo>
+<ds:X509Data>
+<ds:X509Certificate>
+MIIEATCCA6ugAwIBAgIUENzW8WIV7QOqV4VqwWit6qU0878wDQYJKoMOAwoBAQECBQAwLjELMAkG
+A1UEBhMCS1oxHzAdBgNVBAMMFtKw0JrQniAzLjAgKEdPU1QgVEVTVCkwHhcNMjAwMTI4MDYyMzM1
+WhcNMjEwMTI3MDYyMzM1WjCB6TEeMBwGA1UEAwwV0KLQldCh0KLQntCSINCi0JXQodCiMRUwEwYD
+VQQEDAzQotCV0KHQotCe0JIxGDAWBgNVBAUTD0lJTjEyMzQ1Njc4OTAxMTELMAkGA1UEBhMCS1ox
+HDAaBgNVBAcME9Cd0KPQoC3QodCj0JvQotCQ0J0xHDAaBgNVBAgME9Cd0KPQoC3QodCj0JvQotCQ
+0J0xGDAWBgNVBAoMD9CQ0J4gItCi0JXQodCiIjEZMBcGA1UEKgwQ0KLQldCh0KLQntCS0JjQpzEY
+MBYGA1UECwwPQklOMTIzNDU2Nzg5MDIxMGwwJQYJKoMOAwoBAQEBMBgGCiqDDgMKAQEBAQEGCiqD
+DgMKAQMBAQADQwAEQCW91DoHd2nmgl8f+PpHjLmm3umVOBGPjTpAy4ZFHQweYAqG0ywqpjebCw+G
+6O+ZQfgkoeONzn0w9UESNINBlB2jggHTMIIBzzAOBgNVHQ8BAf8EBAMCBsAwKAYDVR0lBCEwHwYI
+KwYBBQUHAwQGCCqDDgMDBAECBgkqgw4DAwQBAgEwHwYDVR0jBBgwFoAUB77SHGAIRFawJxXoVzdD
+R7vXVFAwHQYDVR0OBBYEFBOjdBtS17+GCqsZm1b60fRlLjV7MF4GA1UdIARXMFUwUwYHKoMOAwMC
+ATBIMCEGCCsGAQUFBwIBFhVodHRwOi8vcGtpLmdvdi5rei9jcHMwIwYIKwYBBQUHAgIwFwwVaHR0
+cDovL3BraS5nb3Yua3ovY3BzMD0GA1UdHwQ2MDQwMqAwoC6GLGh0dHA6Ly90ZXN0LnBraS5nb3Yu
+a3ovY3JsL25jYV9nb3N0X3Rlc3QuY3JsMD8GA1UdLgQ4MDYwNKAyoDCGLmh0dHA6Ly90ZXN0LnBr
+aS5nb3Yua3ovY3JsL25jYV9kX2dvc3RfdGVzdC5jcmwwcwYIKwYBBQUHAQEEZzBlMDkGCCsGAQUF
+BzAChi1odHRwOi8vdGVzdC5wa2kuZ292Lmt6L2NlcnQvbmNhX2dvc3RfdGVzdC5jZXIwKAYIKwYB
+BQUHMAGGHGh0dHA6Ly90ZXN0LnBraS5nb3Yua3ovb2NzcC8wDQYJKoMOAwoBAQECBQADQQAzXKWW
+G7LNaajQJkr0pXH35gwN1K5FYd3+ybZyUmOSx6JBK5YWKphnzqGN53lHhW8OJ00UdoNOTQBXFNqk
+SEGR
+</ds:X509Certificate>
+</ds:X509Data>
+</ds:KeyInfo>
+</ds:Signature></root>
