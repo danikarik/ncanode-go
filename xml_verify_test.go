@@ -1,6 +1,7 @@
 package ncanode_test
 
 import (
+	"strings"
 	"testing"
 
 	"github.com/danikarik/ncanode-go"
@@ -73,9 +74,17 @@ func TestXMLVerify(t *testing.T) {
 			xml, err := filecontent(tc.Path)
 			require.NoError(t, err)
 
+			if tc.VerifyOCSP || tc.VerifyCRL {
+				xml = strings.Replace(xml, "NCANode", "NCANodeTest", -1)
+			}
+
 			resp, err := client.XMLVerify(xml, tc.VerifyOCSP, tc.VerifyCRL)
 			require.NoError(t, err)
-			require.Equal(t, tc.ExpectedResult, resp.Result.Valid && resp.Result.Cert.Valid)
+			require.Equal(t, tc.ExpectedResult, resp.Result.Valid)
+
+			if tc.VerifyOCSP || tc.VerifyCRL {
+				require.Equal(t, tc.ExpectedResult, resp.Result.Cert.Valid)
+			}
 		})
 	}
 }
