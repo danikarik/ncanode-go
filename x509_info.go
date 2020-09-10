@@ -74,20 +74,20 @@ type Revocation struct {
 
 // Cert holds data of certificate.
 type Cert struct {
-	Valid        bool           `json:"valid"`
-	NotAfter     Time           `json:"notAfter"`
-	NotBefore    Time           `json:"notBefore"`
-	Chain        []X509Response `json:"chain"`
-	KeyUsage     KeyUsage       `json:"keyUsage"`
-	SerialNumber string         `json:"serialNumber"`
-	Subject      Subject        `json:"subject"`
-	SignAlg      string         `json:"signAlg"`
-	Sign         string         `json:"sign"`
-	PublicKey    string         `json:"publicKey"`
-	Issuer       Subject        `json:"issuer"`
-	KeyUser      []KeyUser      `json:"keyUser"`
-	OCSP         *Revocation    `json:"ocsp"`
-	CRL          *Revocation    `json:"crl"`
+	Valid        bool        `json:"valid"`
+	NotAfter     Time        `json:"notAfter"`
+	NotBefore    Time        `json:"notBefore"`
+	Chain        []Cert      `json:"chain"`
+	KeyUsage     KeyUsage    `json:"keyUsage"`
+	SerialNumber string      `json:"serialNumber"`
+	Subject      Subject     `json:"subject"`
+	SignAlg      string      `json:"signAlg"`
+	Sign         string      `json:"sign"`
+	PublicKey    string      `json:"publicKey"`
+	Issuer       Subject     `json:"issuer"`
+	KeyUser      []KeyUser   `json:"keyUser"`
+	OCSP         *Revocation `json:"ocsp"`
+	CRL          *Revocation `json:"crl"`
 }
 
 // X509Response describes json response from X509Info.
