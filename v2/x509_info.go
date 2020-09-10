@@ -75,6 +75,7 @@ type Revocation struct {
 // Cert holds data of certificate.
 type Cert struct {
 	Valid        bool           `json:"valid"`
+	Alias        string         `json:"alias"`
 	NotAfter     Time           `json:"notAfter"`
 	NotBefore    Time           `json:"notBefore"`
 	Chain        []X509Response `json:"chain"`
@@ -93,7 +94,7 @@ type Cert struct {
 // X509Response describes json response from X509Info.
 type X509Response struct {
 	apiResponse
-	Result Cert `json:"result"`
+	Cert Cert `json:"certificate"`
 }
 
 type x509Request struct {

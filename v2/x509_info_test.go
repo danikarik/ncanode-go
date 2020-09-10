@@ -14,8 +14,8 @@ func TestX509Info(t *testing.T) {
 	testCases := []struct {
 		Name           string
 		Path           string
-		VerifyOCSP     bool
-		VerifyCRL      bool
+		CheckOCSP      bool
+		CheckCRL       bool
 		ExpectedResult bool
 	}{
 		{
@@ -45,16 +45,16 @@ func TestX509Info(t *testing.T) {
 			cert, err := base64content(tc.Path)
 			require.NoError(t, err)
 
-			resp, err := client.X509Info(cert, tc.VerifyOCSP, tc.VerifyCRL)
+			resp, err := client.X509Info(cert, tc.CheckOCSP, tc.CheckCRL)
 			require.NoError(t, err)
-			require.Equal(t, tc.ExpectedResult, resp.Result.Valid)
+			require.Equal(t, tc.ExpectedResult, resp.Cert.Valid)
 
-			if tc.VerifyOCSP {
-				require.NotNil(t, resp.Result.OCSP)
+			if tc.CheckOCSP {
+				require.NotNil(t, resp.Cert.OCSP)
 			}
 
-			if tc.VerifyCRL {
-				require.NotNil(t, resp.Result.CRL)
+			if tc.CheckCRL {
+				require.NotNil(t, resp.Cert.CRL)
 			}
 		})
 	}
