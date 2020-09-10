@@ -14,13 +14,13 @@ jobs:
     steps:
 
     - name: Login to Docker Registry
-      run: echo ${{ secrets.PAT }} | docker login ghcr.io -u danikarik --password-stdin
+      run: echo ${{ secrets.PAT }} | docker login docker.pkg.github.com -u danikarik --password-stdin
 
     - name: Pull NCANode image
-      run: docker pull ghcr.io/danikarik/ncanode-test:1.0.0
+      run: docker pull docker.pkg.github.com/danikarik/ncanode-go/ncanode-test:1.0.0
 
     - name: Run NCANode container
-      run: docker run -dti -p 14579:14579 ghcr.io/danikarik/ncanode-test:1.0.0
+      run: docker run -dti -p 14579:14579 docker.pkg.github.com/danikarik/ncanode-go/ncanode-test:1.0.0
 
     - name: Set up Go 1.x
       uses: actions/setup-go@v2
