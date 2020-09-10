@@ -10,6 +10,8 @@ const _defaultPassword = "Qwerty12"
 
 const _defaultXML = "<?xml version=\"1.0\" encoding=\"utf-8\"?><root><name>NCANode</name></root>"
 
+const _defaultRaw = "YXNkYXNk"
+
 func base64content(name string) (string, error) {
 	path := filepath.Join("testdata", name)
 

@@ -19,7 +19,7 @@ func TestTSPSign(t *testing.T) {
 	}{
 		{
 			Name: "Default",
-			Raw:  "YXNkYXNk",
+			Raw:  _defaultRaw,
 		},
 	}
 

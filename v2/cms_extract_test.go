@@ -57,7 +57,7 @@ func TestCMSExtract(t *testing.T) {
 			resp, err := client.CMSExtract(cms)
 			require.NoError(t, err)
 			require.NotEmpty(t, resp.OriginalData)
-			require.Equal(t, "YXNkYXNk", resp.OriginalData)
+			require.Equal(t, _defaultRaw, resp.OriginalData)
 		})
 	}
 }

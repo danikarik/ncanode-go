@@ -63,7 +63,7 @@ func TestCMSSign(t *testing.T) {
 			p12, err := base64content(tc.Path)
 			require.NoError(t, err)
 
-			resp, err := client.CMSSign("YXNkYXNk", ncanode.P12Request{
+			resp, err := client.CMSSign(_defaultRaw, ncanode.P12Request{
 				P12:      p12,
 				Password: _defaultPassword,
 				Alias:    tc.Alias,
