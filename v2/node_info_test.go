@@ -14,8 +14,8 @@ func TestNodeInfo(t *testing.T) {
 	resp, err := client.NodeInfo()
 	require.NoError(t, err)
 
-	require.False(t, resp.Result.Datetime.IsZero())
-	require.NotEmpty(t, resp.Result.Timezone)
-	require.Contains(t, resp.Result.Name, "NCANode")
-	require.NotEmpty(t, resp.Result.Version)
+	require.False(t, resp.Datetime.IsZero())
+	require.NotEmpty(t, resp.Timezone)
+	require.Contains(t, resp.Name, "NCANode")
+	require.NotEmpty(t, resp.Version)
 }
