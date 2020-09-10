@@ -99,7 +99,7 @@ type pkcs12Request struct {
 	Alias     string `json:"alias,omitempty"`
 }
 
-// X509Response describes json response from X509Info.
+// X509Response describes json response from PKCS12Info.
 type X509Response struct {
 	apiResponse
 	Cert Cert `json:"certificate"`
