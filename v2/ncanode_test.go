@@ -13,7 +13,7 @@ const _defaultXML = "<?xml version=\"1.0\" encoding=\"utf-8\"?><root><name>NCANo
 const _defaultRaw = "YXNkYXNk"
 
 func base64content(name string) (string, error) {
-	path := filepath.Join("testdata", name)
+	path := filepath.Join("../testdata", name)
 
 	content, err := ioutil.ReadFile(path)
 	if err != nil {
@@ -24,7 +24,7 @@ func base64content(name string) (string, error) {
 }
 
 func filecontent(name string) (string, error) {
-	path := filepath.Join("testdata", name)
+	path := filepath.Join("../testdata", name)
 
 	content, err := ioutil.ReadFile(path)
 	if err != nil {

@@ -26,7 +26,7 @@ func (c *Client) RawVerify(cms string, verifyOCSP, verifyCRL bool) (*RawVerifyRe
 	}
 
 	body := apiRequest{
-		Version: _v1,
+		Version: c.version,
 		Method:  "RAW.verify",
 		Params: rawVerifyRequest{
 			CMS:        cms,

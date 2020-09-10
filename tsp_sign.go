@@ -23,7 +23,7 @@ func (c *Client) TSPSign(raw string, policy Policy, alg HashAlgorithm) (*TSPSign
 	}
 
 	body := apiRequest{
-		Version: _v1,
+		Version: c.version,
 		Method:  "TSP.sign",
 		Params: tspSignRequest{
 			Raw:              raw,

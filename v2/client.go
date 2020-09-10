@@ -48,7 +48,7 @@ func NewClient(addr string, opts ...Option) (*Client, error) {
 
 	client := &Client{
 		host:    addr,
-		version: "1.0",
+		version: "2.0",
 		client:  &http.Client{Timeout: _timeout},
 	}
 

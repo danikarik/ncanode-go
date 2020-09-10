@@ -75,6 +75,7 @@ type Revocation struct {
 // Cert holds data of certificate.
 type Cert struct {
 	Valid        bool        `json:"valid"`
+	Alias        string      `json:"alias"`
 	NotAfter     Time        `json:"notAfter"`
 	NotBefore    Time        `json:"notBefore"`
 	Chain        []Cert      `json:"chain"`
@@ -90,33 +91,37 @@ type Cert struct {
 	CRL          *Revocation `json:"crl"`
 }
 
-// X509Response describes json response from X509Info.
+type pkcs12Request struct {
+	P12       string `json:"p12"`
+	Password  string `json:"password"`
+	CheckOCSP bool   `json:"checkOcsp"`
+	CheckCRL  bool   `json:"checkCrl"`
+	Alias     string `json:"alias,omitempty"`
+}
+
+// X509Response describes json response from PKCS12Info.
 type X509Response struct {
 	apiResponse
-	Result Cert `json:"result"`
+	Cert Cert `json:"certificate"`
 }
 
-type x509Request struct {
-	Cert       string `json:"cert"`
-	VerifyOCSP bool   `json:"verifyOcsp"`
-	VerifyCRL  bool   `json:"verifyCrl"`
-}
-
-// X509Info returns certifacate info.
+// PKCS12Info returns P12 container info.
 //
-// See https://ncanode.kz/docs.php?go=68c0077b854fcdb23c567751b1329be3a34447c0
-func (c *Client) X509Info(cert string, verifyOCSP, verifyCRL bool) (*X509Response, error) {
-	if cert == "" {
+// See https://ncanode.kz/docs.php?go=fa530e09377c651e57ac892137b850e2134d741b
+func (c *Client) PKCS12Info(p12, password string, checkOCSP, checkCRL bool, alias string) (*X509Response, error) {
+	if p12 == "" || password == "" {
 		return nil, ErrInvalidRequestBody
 	}
 
 	body := apiRequest{
 		Version: c.version,
-		Method:  "X509.info",
-		Params: x509Request{
-			Cert:       cert,
-			VerifyOCSP: verifyOCSP,
-			VerifyCRL:  verifyCRL,
+		Method:  "info.pkcs12",
+		Params: pkcs12Request{
+			P12:       p12,
+			Password:  password,
+			CheckOCSP: checkOCSP,
+			CheckCRL:  checkCRL,
+			Alias:     alias,
 		},
 	}
 

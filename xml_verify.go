@@ -24,7 +24,7 @@ func (c *Client) XMLVerify(xml string, verifyOCSP, verifyCRL bool) (*XMLVerifyRe
 	}
 
 	body := apiRequest{
-		Version: _v1,
+		Version: c.version,
 		Method:  "XML.verify",
 		Params: xmlVerifyRequest{
 			XML:        xml,

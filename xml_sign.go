@@ -67,7 +67,7 @@ func (c *Client) XMLSign(p12, password, xml string, config *TSPConfig) (*XMLSign
 	}
 
 	body := apiRequest{
-		Version: _v1,
+		Version: c.version,
 		Method:  "XML.sign",
 		Params: xmlSignRequest{
 			P12:              p12,

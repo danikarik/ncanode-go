@@ -16,7 +16,7 @@ func (c *Client) PKCS12Info(p12, password string, verifyOCSP, verifyCRL bool) (*
 	}
 
 	body := apiRequest{
-		Version: _v1,
+		Version: c.version,
 		Method:  "PKCS12.info",
 		Params: pkcs12Request{
 			P12:        p12,

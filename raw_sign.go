@@ -32,7 +32,7 @@ func (c *Client) RawSign(p12, password, raw string, config *TSPConfig) (*RawSign
 	}
 
 	body := apiRequest{
-		Version: _v1,
+		Version: c.version,
 		Method:  "RAW.sign",
 		Params: rawSignRequest{
 			P12:              p12,

@@ -27,7 +27,7 @@ func (c *Client) TSPVerify(cms string) (*TSPVerifyResponse, error) {
 	}
 
 	body := apiRequest{
-		Version: _v1,
+		Version: c.version,
 		Method:  "TSP.verify",
 		Params:  tspVerifyRequest{CMS: cms},
 	}

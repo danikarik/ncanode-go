@@ -59,7 +59,7 @@ func TestRawSign(t *testing.T) {
 			p12, err := base64content(tc.Path)
 			require.NoError(t, err)
 
-			resp, err := client.RawSign(p12, _defaultPassword, "YXNkYXNk", tc.Config)
+			resp, err := client.RawSign(p12, _defaultPassword, _defaultRaw, tc.Config)
 			require.NoError(t, err)
 			require.NotEmpty(t, resp.Result.CMS)
 
