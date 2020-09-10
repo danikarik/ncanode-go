@@ -75,7 +75,11 @@ func TestRawVerify(t *testing.T) {
 
 			resp, err := client.RawVerify(cms, tc.VerifyOCSP, tc.VerifyCRL)
 			require.NoError(t, err)
-			require.Equal(t, tc.ExpectedResult, resp.Result.Valid && resp.Result.Cert.Valid)
+			require.True(t, resp.Result.Valid)
+
+			if tc.VerifyOCSP || tc.VerifyCRL {
+				require.Equal(t, tc.ExpectedResult, resp.Result.Cert.Valid)
+			}
 		})
 	}
 }
