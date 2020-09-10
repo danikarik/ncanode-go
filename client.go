@@ -56,6 +56,10 @@ func NewClient(addr string, opts ...Option) (*Client, error) {
 		}
 	}
 
+	if err := client.ping(); err != nil {
+		return nil, err
+	}
+
 	return client, nil
 }
 
@@ -104,5 +108,13 @@ func (c *Client) call(body, reply interface{}, mods ...modifier) error {
 		return fmt.Errorf("decode payload: %w", err)
 	}
 
+	return nil
+}
+
+func (c *Client) ping() error {
+	_, err := c.client.Get(c.host)
+	if err != nil {
+		return ErrFailedConnection
+	}
 	return nil
 }
