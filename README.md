@@ -58,7 +58,7 @@ if err != nil {
 log.Println(resp.Result)
 ```
 
-### Авторы
+## Авторы
 
 - [danikarik](https://github.com/danikarik)
 
