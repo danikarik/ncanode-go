@@ -55,7 +55,7 @@ if err != nil {
     log.Fatal(err)
 }
 
-log.Println(resp.Result)
+log.Println(resp)
 ```
 
 ## Авторы
