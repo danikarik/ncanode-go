@@ -72,6 +72,9 @@ type Revocation struct {
 	Status    Status      `json:"status"`
 }
 
+// IsActive checks whether Revocation is active or not.
+func (r *Revocation) IsActive() bool { return r.Status == StatusActive }
+
 // Cert holds data of certificate.
 type Cert struct {
 	Valid        bool        `json:"valid"`
